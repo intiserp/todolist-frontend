@@ -13,8 +13,7 @@ const TodoForm: React.FC<Props> = (props) => {
   const [task, setTask] = useState("");
   const { addTodo } = props;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (!task) {
       return;
     }
@@ -26,7 +25,7 @@ const TodoForm: React.FC<Props> = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <input
         type="text"
         className="input"
@@ -35,8 +34,8 @@ const TodoForm: React.FC<Props> = (props) => {
           setTask(e.target.value)
         }
       />
-      <input type="submit" value="Add Todo" />
-    </form>
+      <button onClick={handleSubmit}>Add Todo</button>
+    </>
   );
 };
 
