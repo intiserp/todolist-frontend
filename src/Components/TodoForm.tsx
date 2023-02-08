@@ -1,3 +1,4 @@
+import { Button, Input } from "@mantine/core";
 import { useState } from "react";
 
 interface Todo {
@@ -13,8 +14,7 @@ const TodoForm: React.FC<Props> = (props) => {
   const [task, setTask] = useState("");
   const { addTodo } = props;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (!task) {
       return;
     }
@@ -26,8 +26,8 @@ const TodoForm: React.FC<Props> = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <>
+      <Input
         type="text"
         className="input"
         value={task}
@@ -35,8 +35,10 @@ const TodoForm: React.FC<Props> = (props) => {
           setTask(e.target.value)
         }
       />
-      <input type="submit" value="Add Todo" />
-    </form>
+      <Button type="submit" onClick={handleSubmit}>
+        Add Task
+      </Button>
+    </>
   );
 };
 

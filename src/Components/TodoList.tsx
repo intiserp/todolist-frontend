@@ -1,3 +1,5 @@
+import { Button, Text } from "@mantine/core";
+
 interface Todo {
   task: string;
   id: number;
@@ -12,14 +14,21 @@ const TodoList = (props: TodoListProps) => {
   const { todos, removeTodo } = props;
 
   return (
-    <ul>
+    <>
       {todos.map((todo) => (
-        <li key={todo.id}>
+        <Text>
           {todo.task}
-          <button onClick={() => removeTodo(todo.id)}>X</button>
-        </li>
+          <Button
+            variant="subtle"
+            size="xs"
+            // px="xs"
+            onClick={() => removeTodo(todo.id)}
+          >
+            X
+          </Button>
+        </Text>
       ))}
-    </ul>
+    </>
   );
 };
 
